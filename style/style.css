@@ -1,0 +1,17 @@
+body{
+    font-family: arial, sans-serif;
+}
+.products li{
+    margin: 10px 0 10px 0;
+}
+.products .item{
+    margin: 0 20px 0 0;
+}
+.item{
+    cursor: pointer;
+}
+.container{
+    border: 1px solid #000;
+    width: 500px;
+    height: 200px;
+}
