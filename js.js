@@ -54,3 +54,11 @@ $(".item").click(function(){
 //      success: function(resultData) { alert("Save Complete") }
 //});
 //})
+
+$("#new-order").click(function(){
+    var addNewOrder = $.ajax({
+        type: 'POST',
+        url: "new-order.php",
+        success: function(resultData) { alert("Save Complete") }
+    });
+})

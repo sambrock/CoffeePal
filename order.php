@@ -14,7 +14,7 @@ include("get_items.php");
     </head>
     <body>
         <img src="img/logo.svg" height="70">
-
+        <a id="new-order">New Order</a>
         <ul class="products">
             <?php
             foreach($hot_drinks as $item){
