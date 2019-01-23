@@ -5,7 +5,6 @@ include("current_order.php");
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -20,30 +19,57 @@ include("current_order.php");
         <main>
             <div class="container">
                 <div class="sort-btn-container">
-                    <div class="sort-btn active"><span>Hot Drinks</span></div>
-                    <div class="sort-btn"><span>Cold Drinks</span></div>
-                    <div class="sort-btn"><span>Food</span></div>
-                    <div class="sort-btn"><span>Snacks</span></div>
+                    <div class="sort-btn active" id="hot-drinks-btn"><span>Hot Drinks</span></div>
+                    <div class="sort-btn" id="cold-drinks-btn"><span>Cold Drinks</span></div>
+                    <div class="sort-btn" id="food-btn"><span>Food</span></div>
+                    <div class="sort-btn" id="snacks-btn"><span>Snacks</span></div>
                 </div>
-                <div class="item-btn-container" id="hot_drinks">
-                    <div class="item-btn-containergrid">
-
+                <div class="products" id="hot_drinks">
+                    <div class="item-btns-container" id="hot-drinks">
                         <?php
                         foreach($hot_drinks as $item){
-                            echo "<div class='item-btn'";
-                            echo "<span class='item_name'>{$item["item_name"]}</span><span class='item_price'>{$item["item_price"]}</span><span class='item_id' data-id='{$item["item_id"]}'></span><span class='item_id' data-type='{$item["item_type"]}'></span>";
+                            echo "<div class='item-btn'>";
+                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
+                            echo "</div>";
+                        }
+                        ?>
+                    </div>
+                    <div class="item-btns-container" id="cold-drinks">
+                        <?php
+                        foreach($cold_drinks as $item){
+                            echo "<div class='item-btn'>";
+                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
+                            echo "</div>";
+                        }
+                        ?>
+                    </div>
+                    <div class="item-btns-container" id="food">
+                        <?php
+                        foreach($food as $item){
+                            echo "<div class='item-btn'>";
+                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
+                            echo "</div>";
+                        }
+                        ?>
+                    </div>
+                    <div class="item-btns-container" id="snacks">
+                        <?php
+                        foreach($snacks as $item){
+                            echo "<div class='item-btn'>";
+                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
                             echo "</div>";
                         }
                         ?>
                     </div>
                 </div>
-                <section class="current_order">
+
+                <div class="current_order">
                     <?php
                     foreach($current_order as $item){
                         echo "<span>{$item["item_name"]}</span><span>{$item["item_price"]}</span>";
                     }
                     ?>
-                </section>
+                </div>
             </div>
         </main>
         <script src="js.js"></script>

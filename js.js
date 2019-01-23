@@ -1,5 +1,39 @@
-$('.item-btn').height($('.item-btn').width());
-$('.item-btn-containergrid').height($('.item-btn-containergrid').width());
+$(".item-btn").click(function(){
+    $(".item-btn").removeClass("active");
+    $(this).addClass("active");
+})
+
+$(".sort-btn").click(function(){
+    $btnID = $(this).attr("id");
+    if($btnID==="hot-drinks-btn"){
+        $("#hot-drinks").show();
+        $("#cold-drinks").hide();
+        $("#food").hide();
+        $("#snacks").hide();
+    }else if($btnID==="cold-drinks-btn"){
+        $("#hot-drinks").hide();
+        $("#cold-drinks").show();
+        $("#food").hide();
+        $("#snacks").hide();
+    }else if($btnID==="food-btn"){
+        $("#hot-drinks").hide();
+        $("#cold-drinks").hide();
+        $("#food").show();
+        $("#snacks").hide();
+    }else if($btnID==="snacks-btn"){
+        $("#hot-drinks").hide();
+        $("#cold-drinks").hide();
+        $("#food").hide();
+        $("#snacks").show();
+    }
+
+    $(".sort-btn").removeClass("active");
+    $(this).addClass("active");
+    console.log($btnID);
+})
+
+//$('.item-btn').height($('.item-btn').width());
+$(".item-btns-container").css("grid-auto-rows", $('.item-btn').width());
 
 $(".cat-btn").click(function(){
     $category = $(this).val();
