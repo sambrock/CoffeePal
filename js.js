@@ -26,7 +26,6 @@ $(".sort-btn").click(function(){
         $("#food").hide();
         $("#snacks").show();
     }
-
     $(".sort-btn").removeClass("active");
     $(this).addClass("active");
     console.log($btnID);
