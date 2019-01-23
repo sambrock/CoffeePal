@@ -42,23 +42,22 @@ $(".item").click(function(){
         size();
         tea();
     }
-    console.log(type);
 })
 
-//$(".item").click(function(){
-//    var saveData = $.ajax({
-//      type: 'POST',
-//      url: "add.php",
-//      data: { product_id: $(this).find(".prod_id").attr("data-id")} ,
-//      dataType: "text",
-//      success: function(resultData) { alert("Save Complete") }
-//});
-//})
+$(".item").click(function(){
+    var addItem = $.ajax({
+      type: 'POST',
+      url: "add.php",
+      data: { product_id: $(this).attr("data-id")} ,
+      dataType: "text",
+      success: function(resultData) { alert("Save Complete") }
+});
+    console.log($(this).attr("data-id"));
+})
 
 $("#new-order").click(function(){
     var addNewOrder = $.ajax({
-        type: 'POST',
-        url: "new-order.php",
+        url: "new_order.php",
         success: function(resultData) { alert("Save Complete") }
     });
 })
