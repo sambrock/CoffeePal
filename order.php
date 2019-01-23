@@ -1,6 +1,7 @@
 <?php
 include("db_conn.php");
 include("get_items.php");
+include("current_order.php");
 ?>
 
 <!DOCTYPE html>
@@ -13,40 +14,51 @@ include("get_items.php");
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        <img src="img/logo.svg" height="70">
-        <a id="new-order">New Order</a>
-        <ul class="products">
-            <?php
-            foreach($hot_drinks as $item){
-                echo "<div class='hot-drinks'>";
-                echo "<div class='item'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
-                echo "</div>";
-            }
-            foreach($cold_drinks as $item){
-                echo "<div class='cold-drinks'>";
-                echo "<div class='item'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
-                echo "</div>";
-            }
-            foreach($food as $item){
-                echo "<div class='cold-drinks'>";
-                echo "<div class='item'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
-                echo "</div>";
-            }
-            foreach($snacks as $item){
-                echo "<div class='cold-drinks'>";
-                echo "<div class='item'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
-                echo "</div>";
-            }
-            ?>
-        </ul>
-        <div class="container">
-            <h2>Customisations</h2>
-            <div class="customisations">
+        <header>
+            <img src="img/logo.svg" height="70">
+        </header>
+        <main>
+            <a id="new-order">New Order</a>
+            <ul class="products">
                 <?php
-
+                foreach($hot_drinks as $item){
+                    echo "<div class='hot-drinks'>";
+                    echo "<div class='item' data-id='{$item["item_id"]}'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
+                    echo "</div>";
+                }
+                foreach($cold_drinks as $item){
+                    echo "<div class='cold-drinks'>";
+                    echo "<div class='item'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
+                    echo "</div>";
+                }
+                foreach($food as $item){
+                    echo "<div class='cold-drinks'>";
+                    echo "<div class='item'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
+                    echo "</div>";
+                }
+                foreach($snacks as $item){
+                    echo "<div class='cold-drinks'>";
+                    echo "<div class='item'><span class='item-name'>{$item["item_name"]}<span class='prod-id' data-id='{$item["item_id"]}'></span></span><span>£{$item["price"]}</span><span class='type' hidden>{$item["type"]}</span></li>";
+                    echo "</div>";
+                }
+                ?>
+            </ul>
+            <div class="current-order">
+                <?php
+                foreach($current_order as $item){
+                    echo "<span>{$item["item_name"]}</span><span>{$item["item_price"]}</span>";
+                }
                 ?>
             </div>
-        </div>
+            <div class="container">
+                <h2>Customisations</h2>
+                <div class="customisations">
+                    <?php
+
+                    ?>
+                </div>
+            </div>
+        </main>
         <script src="js.js"></script>
     </body>
 </html>
