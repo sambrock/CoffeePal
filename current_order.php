@@ -8,7 +8,7 @@ $order_id_arr=$prep_stmt_order_id->fetch();
 
 $order_id=$order_id_arr[0];
 
-$q_current_order="SELECT orders.id as order_id, products.name as item_name, products.price as item_price, orders.date_time FROM orders INNER JOIN order_items ON order_items.order_id=orders.id INNER JOIN products ON order_items.product_id=products.id WHERE orders.id=:order_id";
+$q_current_order="SELECT orders.id as order_id, products.id as item_id,products.name as item_name, products.price as item_price, CONCAT(DAYNAME(date_time), ', ', DAY(date_time), ' ',MONTHNAME(date_time),', ', YEAR(date_time), ' - ', TIME(date_time)) as order_datetime FROM orders INNER JOIN order_items ON order_items.order_id=orders.id INNER JOIN products ON order_items.product_id=products.id WHERE orders.id=:order_id";
 $prep_stmt_current_order=$conn->prepare($q_current_order);
 $prep_stmt_current_order->bindValue(":order_id", $order_id);
 $prep_stmt_current_order->execute();

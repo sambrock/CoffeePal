@@ -10,6 +10,7 @@ include("current_order.php");
         <meta charset="utf-8">
         <title>Orders</title>
         <link href="style/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
@@ -62,11 +63,17 @@ include("current_order.php");
                         ?>
                     </div>
                 </div>
-
-                <div class="current_order">
+                <div class="current-order">
+                    <div class="current-order-header">
+                        <h2>Order Details</h2>
+                        <span id="current-order-id">#<?php echo $order_id;?></span>
+                        <span id="current-order-time"><?php echo $current_order[0]["order_datetime"]; ?></span>
+                    </div>
                     <?php
                     foreach($current_order as $item){
-                        echo "<span>{$item["item_name"]}</span><span>{$item["item_price"]}</span>";
+                        echo "<div class='order-item'>";
+                        echo "<span class='order-item-name'>{$item["item_name"]}</span><span class='order-item-price'>£{$item["item_price"]}</span><i class='fas fa-times'></i><span class='item-id' data-id='{$item["item_id"]}'>";
+                        echo "</div>";
                     }
                     ?>
                 </div>
