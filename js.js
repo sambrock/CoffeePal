@@ -1,3 +1,6 @@
+$('.item-btn').height($('.item-btn').width());
+$('.item-btn-containergrid').height($('.item-btn-containergrid').width());
+
 $(".cat-btn").click(function(){
     $category = $(this).val();
     console.log($category);
