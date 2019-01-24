@@ -1,34 +1,19 @@
-$(document).ready(function(){
+$( document ).ready(function(){
+    //Hide item buttons on load
     $("#cold-drinks").hide();
     $("#food").hide();
     $("#snacks").hide();
+
+    //Resize item buttons on load
+    $(".item-btns-container").css("grid-auto-rows", $('.item-btn').width());
 })
 
-$(document).on('click', '.delete', function(){
-    $orderItemID = $(this).attr("data-order-item-id");
-    var deleteItem = $.ajax({
-        type: 'POST',
-        url: "delete.php",
-        data: { id: $orderItemID} ,
-        dataType: "text"
-    });
-    console.log("click");
+//Resize item buttons on resize
+$( window ).resize(function(){
+    $(".item-btns-container").css("grid-auto-rows", $('.item-btn').width());
 })
 
-setInterval(function(){
-    $("#current-order-items").load("current_order_loop.php");
-}, 1000);
-
-$(".item-btn").click(function(){
-    $itemName = $(this).find(".item-name").text();
-
-    $(".item-btn").removeClass("active");
-    $(this).addClass("active");
-
-    $("#order-item-name").empty();
-    $("#order-item-name").append($itemName);
-})
-
+//Show menu items for each category
 $(".sort-btn").click(function(){
     $btnID = $(this).attr("id");
     if($btnID==="hot-drinks-btn"){
@@ -57,56 +42,15 @@ $(".sort-btn").click(function(){
     console.log($btnID);
 })
 
-//$('.item-btn').height($('.item-btn').width());
-$(".item-btns-container").css("grid-auto-rows", $('.item-btn').width());
-
-$(".cat-btn").click(function(){
-    $category = $(this).val();
-    console.log($category);
-    $hidden_input = $("#category");
-    $hidden_input.val($category);
+//Create a new order
+$("#new-order").click(function(){
+    var addNewOrder = $.ajax({
+        url: "new_order.php",
+        success: function(resultData) { alert("Save Complete") }
+    });
 })
 
-function size(){
-    $(".customisations").append('<label>Size: </label>\
-<select class="size">\
-<option value="small">small</option>\
-<option value="medium">medium</option>\
-<option value="large">large</option>\
-</select>')
-}
-
-function shots(){
-    $(".customisations").append('<label>Shots:</label>\
-<select class="shots">\
-<option value="small">small</option>\
-<option value="medium">medium</option>\
-<option value="large">large</option>\
-</select>')
-}
-
-function tea(){
-    $(".customisations").append('<label>Tea bags:</label>\
-<select class="tea">\
-<option value="small">1 tea bag</option>\
-<option value="medium">2 tea bags</option>\
-<option value="large">3 tea bags</option>\
-<option value="large">4 tea bags</option>\
-</select>')
-}
-
-$(".item-btn").click(function(){
-//    var type = $(this).next().next().text();
-//    if(type === "Coffee"){
-//        size();
-//    }else if(type === "Tea"){
-//        size();
-//        tea();
-//    }
-
-
-})
-
+//Add item to current order
 //$(".item").click(function(){
 //    var addItem = $.ajax({
 //        type: 'POST',
@@ -118,9 +62,29 @@ $(".item-btn").click(function(){
 //    console.log($(this).attr("data-id"));
 //})
 
-$("#new-order").click(function(){
-    var addNewOrder = $.ajax({
-        url: "new_order.php",
-        success: function(resultData) { alert("Save Complete") }
+//Delete item from current order
+$( document ).on('click', '.delete', function(){
+    $orderItemID = $(this).attr("data-order-item-id");
+    var deleteItem = $.ajax({
+        type: 'POST',
+        url: "delete.php",
+        data: { id: $orderItemID} ,
+        dataType: "text"
     });
+})
+
+//Refresh the current order items every seccond
+setInterval(function(){
+    $("#current-order-items").load("current_order_loop.php");
+}, 1000);
+
+//Creates customisation menu for current item selected
+$(".item-btn").click(function(){
+    $itemName = $(this).find(".item-name").text();
+
+    $(".item-btn").removeClass("active");
+    $(this).addClass("active");
+
+    $("#order-item-name").empty();
+    $("#order-item-name").append($itemName);
 })
