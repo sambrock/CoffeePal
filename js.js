@@ -1,6 +1,32 @@
+$(document).ready(function(){
+    $("#cold-drinks").hide();
+    $("#food").hide();
+    $("#snacks").hide();
+})
+
+$(document).on('click', '.delete', function(){
+    $orderItemID = $(this).attr("data-order-item-id");
+    var deleteItem = $.ajax({
+        type: 'POST',
+        url: "delete.php",
+        data: { id: $orderItemID} ,
+        dataType: "text"
+    });
+    console.log("click");
+})
+
+setInterval(function(){
+    $("#current-order-items").load("current_order_loop.php");
+}, 1000);
+
 $(".item-btn").click(function(){
+    $itemName = $(this).find(".item-name").text();
+
     $(".item-btn").removeClass("active");
     $(this).addClass("active");
+
+    $("#order-item-name").empty();
+    $("#order-item-name").append($itemName);
 })
 
 $(".sort-btn").click(function(){
@@ -69,27 +95,28 @@ function tea(){
 </select>')
 }
 
-$(".item").click(function(){
-    $(".customisations").empty();
-    var type = $(this).next().next().text();
-    if(type === "Coffee"){
-        size();
-    }else if(type === "Tea"){
-        size();
-        tea();
-    }
+$(".item-btn").click(function(){
+//    var type = $(this).next().next().text();
+//    if(type === "Coffee"){
+//        size();
+//    }else if(type === "Tea"){
+//        size();
+//        tea();
+//    }
+
+
 })
 
-$(".item").click(function(){
-    var addItem = $.ajax({
-      type: 'POST',
-      url: "add.php",
-      data: { product_id: $(this).attr("data-id")} ,
-      dataType: "text",
-      success: function(resultData) { alert("Save Complete") }
-});
-    console.log($(this).attr("data-id"));
-})
+//$(".item").click(function(){
+//    var addItem = $.ajax({
+//        type: 'POST',
+//        url: "add.php",
+//        data: { product_id: $(this).attr("data-id")} ,
+//        dataType: "text",
+//        success: function(resultData) { alert("Save Complete") }
+//    });
+//    console.log($(this).attr("data-id"));
+//})
 
 $("#new-order").click(function(){
     var addNewOrder = $.ajax({

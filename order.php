@@ -17,6 +17,7 @@ include("current_order.php");
         <header>
             <img src="img/logo.svg" height="70">
         </header>
+
         <main>
             <div class="container">
                 <div class="sort-btn-container">
@@ -63,19 +64,30 @@ include("current_order.php");
                         ?>
                     </div>
                 </div>
-                <div class="current-order">
-                    <div class="current-order-header">
-                        <h2>Order Details</h2>
-                        <span id="current-order-id">#<?php echo $order_id;?></span>
-                        <span id="current-order-time"><?php echo $current_order[0]["order_datetime"]; ?></span>
+                <div class="order-info">
+                    <div class="current-order">
+                        <div class="current-order-header">
+                            <h2>Order Details</h2>
+                            <span id="current-order-id">#<?php echo $order_id;?></span>
+                            <span id="current-order-time"><?php echo $current_order[0]["order_datetime"]; ?></span>
+                        </div>
+                        <div id="current-order-items"></div>
                     </div>
-                    <?php
-                    foreach($current_order as $item){
-                        echo "<div class='order-item'>";
-                        echo "<span class='order-item-name'>{$item["item_name"]}</span><span class='order-item-price'>£{$item["item_price"]}</span><i class='fas fa-times'></i><span class='item-id' data-id='{$item["item_id"]}'>";
-                        echo "</div>";
-                    }
-                    ?>
+                    <div class="order-options">
+                        <div class="order-options-header">
+                            <h2 id="order-item-name"></h2>
+                            <span class="order-item-price">£1.80</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                        <div class="option" id="order-size">
+                            <div class="option-header">Size:</div>
+                            <div class="option-inputs">
+                                <div class="size-btn"><i class="fas fa-coffee" id="small-size"></i></div>
+                                <div class="size-btn"><i class="fas fa-coffee" id="medium-size"></i></div>
+                                <div class="size-btn"><i class="fas fa-coffee" id="large-size"></i></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
