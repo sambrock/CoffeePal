@@ -118,13 +118,13 @@ h1,h2,h3{
     display: flex;
     padding: 10px 0;
 }
-.order-item-name{
+.current-order-item-name{
     display: inline-block;
     font-weight: 600;
     font-size: 20px;
 }
-.order-item-price{
-    margin: 0 100px 0 auto;
+.current-order-item-price{
+    margin: 0 110px 0 auto;
     font-size: 16px;
     position: relative;
     top:5px;
@@ -163,10 +163,10 @@ h1,h2,h3{
     height: 48%;
     box-sizing: border-box;
 }
-.order-options-header{
+.option-item-header{
     display: flex;
 }
-.add-btn{
+#add-btn{
     border: none;
     outline: none;
     background: #1D2F52;
@@ -175,18 +175,38 @@ h1,h2,h3{
     border-radius: 20px;
     cursor: pointer;
 }
-.add-btn:hover{
+#add-btn:hover{
     background: #101e2c;
 }
 .option{
     margin: 10px 0;
 }
-.option-header{
+#option-item-name{
+    display: inline-block;
+    font-weight: 600;
     font-size: 20px;
-    margin: 10px 0;
+}
+#option-item-price{
+    margin: 0 40px 0 auto;
+    font-size: 16px;
+    position: relative;
+    top:5px;
 }
 .option-inputs{
     display: flex;
+}
+.option-header{
+    font-size: 16px;
+    margin: 10px 0;
+}
+.option-list{
+
+}
+.option-added{
+    display: flex;
+}
+.option-added-price{
+    margin: 0 124px 0 auto;
 }
 .size-btn{
     height: 60px;
@@ -204,6 +224,12 @@ h1,h2,h3{
 .size-btn:hover{
     background: #c4c4c4;
 }
+.size-btn.active{
+    background: #3da1de;
+}
+.size-btn.active > i{
+    color: #fff;
+}
 .fas.fa-coffee{
     position: absolute;
     bottom: 5px;
@@ -218,3 +244,4 @@ h1,h2,h3{
 #large-size{
     font-size: 40px;
 }
+

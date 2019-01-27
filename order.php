@@ -30,8 +30,8 @@ include("current_order.php");
                     <div class="item-btns-container" id="hot-drinks">
                         <?php
                         foreach($hot_drinks as $item){
-                            echo "<div class='item-btn'>";
-                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
+                            echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-id='{$item["item_id"]}' data-type='{$item["item_type"]}'>";
+                            echo "<span class='item-name' >{$item["item_name"]}</span><span class='item-price' >£{$item["item_price"]}</span>";
                             echo "</div>";
                         }
                         ?>
@@ -39,8 +39,8 @@ include("current_order.php");
                     <div class="item-btns-container" id="cold-drinks">
                         <?php
                         foreach($cold_drinks as $item){
-                            echo "<div class='item-btn'>";
-                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
+                            echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-item-id='{$item["item_id"]}' data-item-type='{$item["item_type"]}'>";
+                            echo "<span class='item-name' >{$item["item_name"]}</span><span class='item-price' >£{$item["item_price"]}</span>";
                             echo "</div>";
                         }
                         ?>
@@ -48,8 +48,8 @@ include("current_order.php");
                     <div class="item-btns-container" id="food">
                         <?php
                         foreach($food as $item){
-                            echo "<div class='item-btn'>";
-                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
+                            echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-id='{$item["item_id"]}' data-type='{$item["item_type"]}'>";
+                            echo "<span class='item-name' >{$item["item_name"]}</span><span class='item-price' >£{$item["item_price"]}</span>";
                             echo "</div>";
                         }
                         ?>
@@ -57,8 +57,8 @@ include("current_order.php");
                     <div class="item-btns-container" id="snacks">
                         <?php
                         foreach($snacks as $item){
-                            echo "<div class='item-btn'>";
-                            echo "<span class='item-name'>{$item["item_name"]}</span><span class='item-price'>£{$item["item_price"]}</span><span class='item-id' data-id='{$item["item_id"]}'></span><span class='item-type' data-type='{$item["item_type"]}'></span>";
+                            echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-id='{$item["item_id"]}' data-type='{$item["item_type"]}'>";
+                            echo "<span class='item-name' >{$item["item_name"]}</span><span class='item-price' >£{$item["item_price"]}</span>";
                             echo "</div>";
                         }
                         ?>
@@ -74,17 +74,43 @@ include("current_order.php");
                         <div id="current-order-items"></div>
                     </div>
                     <div class="order-options">
-                        <div class="order-options-header">
-                            <h2 id="order-item-name"></h2>
-                            <span class="order-item-price">£1.80</span>
-                            <button class="add-btn">Add</button>
+                        <div class="option-item-header">
+                            <span id="option-item-name" data-item-id=""></span>
+                            <span id="option-item-price" data-item-price=""></span>
+                            <button id="add-btn">Add</button>
                         </div>
-                        <div class="option" id="order-size">
+                        <div class="option-list"></div>
+                        <div class="option" id="size">
                             <div class="option-header">Size:</div>
                             <div class="option-inputs">
-                                <div class="size-btn"><i class="fas fa-coffee" id="small-size"></i></div>
-                                <div class="size-btn"><i class="fas fa-coffee" id="medium-size"></i></div>
-                                <div class="size-btn"><i class="fas fa-coffee" id="large-size"></i></div>
+                                <div class="size-btn active" data-size="small" data-price="0" data-option-name="Small"><i class="fas fa-coffee" id="small-size"></i></div>
+                                <div class="size-btn" data-size="medium" data-price="0.20" data-option-name="Medium"><i class="fas fa-coffee" id="medium-size"></i></div>
+                                <div class="size-btn" data-size="large" data-price="0.40" data-option-name="Large"><i class="fas fa-coffee" id="large-size"></i></div>
+                            </div>
+                        </div>
+                        <div class="option-header">Add-ins:</div>
+                        <div class="option" id="add-ins">
+                            <div class="option-inputs">
+                                <label>Splash of cream:
+                                    <select class="option-add-in" id="cream">
+                                        <option value="0" hidden>Select</option>
+                                        <option value="1" data-option-name="Extra Splash of Cream" data-price="0">Extra Splash of Cream</option>
+                                        <option value="2" data-option-name="Light Splash of Cream" data-price="0">Light Splash of Cream</option>
+                                        <option value="3" data-option-name="Splash of Cream" data-price="0">Splash of Cream</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="option" id="add-ins">
+                            <div class="option-inputs">
+                                <label>Splash of milk:
+                                    <select class="option-add-in" id="milk">
+                                        <option value="0" hidden>Select</option>
+                                        <option value="1" data-option-name="Extra Splash of Milk" data-price="0">Extra Splash of Milk</option>
+                                        <option value="2" data-option-name="Light Splash of Milk" data-price="0">Light Splash of Milk</option>
+                                        <option value="3" data-option-name="Splash of Milk" data-price="0">Splash of Milk</option>
+                                    </select>
+                                </label>
                             </div>
                         </div>
                     </div>
