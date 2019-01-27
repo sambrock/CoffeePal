@@ -4,7 +4,7 @@ include("db_conn.php");
 date_default_timezone_set('Europe/London');
 
 $orderTime = date("Y-m-d H:i:s");
-$status = "Pending";
+$status = "Processing";
 
 $q="INSERT INTO orders(date_time,status) values(:orderTime, :status)";
 $prep_stmt=$conn->prepare($q);
