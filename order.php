@@ -1,7 +1,6 @@
 <?php
 include("db_conn.php");
 include("get_items.php");
-include("current_order.php");
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +35,7 @@ include("current_order.php");
                         }
                         ?>
                     </div>
-                    <div class="item-btns-container" id="cold-drinks">
+                    <div class="item-btns-container" id="cold-drinks" style="display: none;">
                         <?php
                         foreach($cold_drinks as $item){
                             echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-item-id='{$item["item_id"]}' data-item-type='{$item["item_type"]}'>";
@@ -45,7 +44,7 @@ include("current_order.php");
                         }
                         ?>
                     </div>
-                    <div class="item-btns-container" id="food">
+                    <div class="item-btns-container" id="food" style="display: none;">
                         <?php
                         foreach($food as $item){
                             echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-id='{$item["item_id"]}' data-type='{$item["item_type"]}'>";
@@ -54,7 +53,7 @@ include("current_order.php");
                         }
                         ?>
                     </div>
-                    <div class="item-btns-container" id="snacks">
+                    <div class="item-btns-container" id="snacks" style="display: none;">
                         <?php
                         foreach($snacks as $item){
                             echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-id='{$item["item_id"]}' data-type='{$item["item_type"]}'>";
@@ -65,15 +64,21 @@ include("current_order.php");
                     </div>
                 </div>
                 <div class="order-info">
+                    <div id="order-status-check">
+                        <?php include("order_check.php"); ?>
+                    </div>
                     <div class="current-order">
-                        <div class="current-order-header">
-                            <h2>Order Details</h2>
-                            <span id="current-order-id">#<?php echo $order_id;?></span>
-                            <span id="current-order-time"><?php echo $current_order[0]["order_datetime"]; ?></span>
+                        <div id="new-order" style="display: none;">
+                            <button id="add-new-order">New Order</button>
                         </div>
-                        <div id="current-order-items"></div>
+                        <div id="current-order-info">
+
+                        </div>
                     </div>
                     <div class="order-options">
+                        <div class="current-order-header">
+                            <h2>Options</h2>
+                        </div>
                         <div class="option-item-header">
                             <span id="option-item-name" data-item-id=""></span>
                             <span id="option-item-price" data-item-price=""></span>
@@ -83,7 +88,7 @@ include("current_order.php");
                         <div class="option" id="size">
                             <div class="option-header">Size:</div>
                             <div class="option-inputs">
-                                <div class="size-btn active" data-size="small" data-price="0" data-option-name="Small"><i class="fas fa-coffee" id="small-size"></i></div>
+                                <div class="size-btn active" id="default-size" data-size="small" data-price="0" data-option-name="Small"><i class="fas fa-coffee" id="small-size"></i></div>
                                 <div class="size-btn" data-size="medium" data-price="0.20" data-option-name="Medium"><i class="fas fa-coffee" id="medium-size"></i></div>
                                 <div class="size-btn" data-size="large" data-price="0.40" data-option-name="Large"><i class="fas fa-coffee" id="large-size"></i></div>
                             </div>
@@ -113,6 +118,15 @@ include("current_order.php");
                                 </label>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div id="pending-orders">
+                    <div class="current-order-header">
+                        <h2>Pending Orders</h2>
+                        <span id="pending-orders-count">5 orders</span>
+                    </div>
+                    <div id="pending-orders-list">
+
                     </div>
                 </div>
             </div>
