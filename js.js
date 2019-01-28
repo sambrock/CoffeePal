@@ -89,7 +89,7 @@ $("#add-new-order").click(function(){
 //Get current order total
 function orderTotal(){
     setTimeout(function(){
-        $("#total-val").load("total.php");
+        $("#current-order-total").load("total.php");
     } , 1000);
 }
 
@@ -161,7 +161,7 @@ $("#cancel-btn").click(function(){
 })
 
 //Process order
-$("#pay-btn").click(function(){
+$( document ).on('click', '#pay-btn', function(){
     $orderID = $("#current-order-id").attr("data-order-id");
 
     var processOrder = $.ajax({
@@ -171,7 +171,9 @@ $("#pay-btn").click(function(){
         dataType: "text"
     });
 
-    console.log($orderID);
+    console.log("pay");
+
+    loadPendingOrders();
 })
 
 //Option prices
