@@ -7,6 +7,7 @@ foreach($pending_order_id as $id){
     echo "<span class='pending-order-id'>Order #{$id["order_id"]}</span>";
     foreach($pending_order_items as $item){
         if($id["order_id"] == $item["order_id"]){
+            echo "<div class='pending-order-item'>";
             echo "<span class='pending-order-item-name'>{$item["item_name"]}</span>";
             foreach($pending_order_options as $option){
                 if($id["order_id"] == $option["order_id"] && $item["item_id"] == $option["product_id"]){
@@ -27,6 +28,7 @@ foreach($pending_order_id as $id){
                     }
                 }
             }
+            echo "</div>";
         }
     }
     echo "<div class='done-btn-div'><button class='done-btn' data-pending-order-id='{$id["order_id"]}'>Done</button></div>";
