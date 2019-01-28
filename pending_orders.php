@@ -1,7 +1,7 @@
 <?php
 include("db_conn.php");
 
-$q_pending_order_id="SELECT orders.id as order_id FROM orders WHERE status = 'Pending'";
+$q_pending_order_id="SELECT orders.id as order_id FROM orders WHERE status = 'Pending' ORDER BY order_id DESC";
 $prep_stmt_pending_order_id=$conn->prepare($q_pending_order_id);
 $prep_stmt_pending_order_id->execute();
 $pending_order_id=$prep_stmt_pending_order_id->fetchAll();
