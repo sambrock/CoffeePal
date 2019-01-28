@@ -112,11 +112,12 @@ $("#add-btn").click(function(){
     $opt_1 = $("#add-in-size").attr("data-option-name");
     $opt_2 = $("#add-in-cream").attr("data-option-name");
     $opt_3 = $("#add-in-milk").attr("data-option-name");
+    $opt_4 = $("#add-in-tea-bag").attr("data-option-name");
 
     var addItem = $.ajax({
         type: 'POST',
         url: "add.php",
-        data: { id: $itemID, price: $itemPrice, opt_1: $opt_1, opt_2: $opt_2, opt_3: $opt_3 },
+        data: { id: $itemID, price: $itemPrice, opt_1: $opt_1, opt_2: $opt_2, opt_3: $opt_3, opt_4: $opt_4 },
         dataType: "text"
     });
 
@@ -165,6 +166,8 @@ $(".item-btn").click(function(){
     $("#option-item-price").attr("data-item-price", $itemPrice);
 
     options["itemPrice"] = parseFloat($itemPrice);
+    
+    sortOptions();
 })
 
 //Cancel order
@@ -193,6 +196,8 @@ $( document ).on('click', '#pay-btn', function(){
     });
 
     loadPendingOrders();
+    
+    newOrder();
 })
 
 //Option prices
@@ -265,11 +270,12 @@ function clearAllOptions(){
 //Load pending orders
 function loadPendingOrders(){
     setTimeout(function(){
+        $("#pending-orders-count").load("pending_order_count.php");
         $("#pending-orders-list").load("pending_orders_loop.php");
     } , 1000);
 }
 
-
+//Complete pending orders
 $( document ).on('click', '.done-btn', function(){
     $orderID = $(this).attr("data-pending-order-id");
 
@@ -282,3 +288,23 @@ $( document ).on('click', '.done-btn', function(){
 
     loadPendingOrders();
 })
+
+//Sort options depending on type
+function sortOptions(){
+    $(".option").hide();
+    
+    $itemType = $(".item-btn.active").attr("data-type");
+
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea"){
+        $("#option-size").show();
+    }
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha"){
+        $("#option-cream").show();
+    }
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea"){
+        $("#option-milk").show();
+    }
+    if($itemType==="Tea"){
+        $("#option-tea-bags").show();
+    }
+}

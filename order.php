@@ -14,7 +14,7 @@ include("get_items.php");
     </head>
     <body>
         <header>
-            <img src="img/logo.svg" height="70">
+            <img id="logo" src="img/logo.svg" height="60">
         </header>
 
         <main>
@@ -38,7 +38,7 @@ include("get_items.php");
                     <div class="item-btns-container" id="cold-drinks" style="display: none;">
                         <?php
                         foreach($cold_drinks as $item){
-                            echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-item-id='{$item["item_id"]}' data-item-type='{$item["item_type"]}'>";
+                            echo "<div class='item-btn' data-item-name='{$item["item_name"]}' data-item-price='{$item["item_price"]}' data-id='{$item["item_id"]}' data-type='{$item["item_type"]}'>";
                             echo "<span class='item-name' >{$item["item_name"]}</span><span class='item-price' >£{$item["item_price"]}</span>";
                             echo "</div>";
                         }
@@ -85,7 +85,7 @@ include("get_items.php");
                             <button id="add-btn">Add</button>
                         </div>
                         <div class="option-list"></div>
-                        <div class="option" id="size">
+                        <div class="option" id="option-size" style="display: none;">
                             <div class="option-header">Size:</div>
                             <div class="option-inputs">
                                 <div class="size-btn active" id="default-size" data-size="small" data-price="0" data-option-name="Small"><i class="fas fa-coffee" id="small-size"></i></div>
@@ -94,7 +94,7 @@ include("get_items.php");
                             </div>
                         </div>
                         <div class="option-header">Add-ins:</div>
-                        <div class="option" id="add-ins">
+                        <div class="option" id="option-cream" style="display: none;">
                             <div class="option-inputs">
                                 <label>Splash of cream:
                                     <select class="option-add-in" id="cream">
@@ -106,7 +106,7 @@ include("get_items.php");
                                 </label>
                             </div>
                         </div>
-                        <div class="option" id="add-ins">
+                        <div class="option" id="option-milk" style="display: none;">
                             <div class="option-inputs">
                                 <label>Splash of milk:
                                     <select class="option-add-in" id="milk">
@@ -118,12 +118,24 @@ include("get_items.php");
                                 </label>
                             </div>
                         </div>
+                        <div class="option" id="option-tea-bags" style="display: none;">
+                            <div class="option-inputs">
+                                <label>Tea-bags:
+                                    <select class="option-add-in" id="tea-bag">
+                                        <option value="0" data-option-name="1 Tea Bag" data-price="0">1 Tea Bag</option>
+                                        <option value="1" data-option-name="2 Tea Bags" data-price="0.10">2 Tea Bags</option>
+                                        <option value="2" data-option-name="3 Tea Bags" data-price="0.20">3 Tea Bags</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="pending-orders">
                     <div class="current-order-header">
                         <h2>Pending Orders</h2>
-                        <span id="pending-orders-count">5 orders</span>
+                        <div id="pending-orders-count">
+                        </div>
                     </div>
                     <div id="pending-orders-list">
 
