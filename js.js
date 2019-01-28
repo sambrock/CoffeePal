@@ -25,17 +25,30 @@ function orderStatus(){
     $orderStatus = $("#order-check").attr("data-status");
     console.log($orderStatus);
     if($("#order-check").attr("data-status")==="Processing"){
-        $("#new-order").hide();
-        setTimeout(function(){
+        showCurrentOrder();
+    }else{
+        newOrder();
+    }
+}
+
+//Show new order
+function newOrder(){
+    $(".order-options").hide();
+    $("#new-order").fadeIn(200);
+    $("#current-order-info").empty();
+}
+
+//Hide new order
+function showCurrentOrder(){
+    $("#new-order").fadeOut(200);
+    $(".order-options").slideDown(300);
+        
+    setTimeout(function(){
             $("#current-order-info").load("order_info.php");
         } , 1000);
         setTimeout(function(){
             $("#current-order-items").load("current_order_loop.php");
         } , 1200);
-    }else{
-        $(".order-options").hide();
-        $("#new-order").show();
-    }
 }
 
 //Resize item buttons on resize
@@ -74,8 +87,7 @@ $(".sort-btn").click(function(){
 
 //Create a new order
 $("#add-new-order").click(function(){
-    $("#new-order").fadeOut(200);
-    $(".order-options").slideDown(300);
+    showCurrentOrder();
 
     var addNewOrder = $.ajax({
         url: "new_order.php"
@@ -156,8 +168,17 @@ $(".item-btn").click(function(){
 })
 
 //Cancel order
-$("#cancel-btn").click(function(){
-
+$( document ).on('click', '#cancel-btn', function(){
+    $orderID = $("#current-order-id").attr("data-order-id");
+    
+    var deleteOrder = $.ajax({
+        type: 'POST',
+        url: "delete_order.php",
+        data: { id: $orderID} ,
+        dataType: "text"
+    });
+    
+    newOrder();
 })
 
 //Process order
@@ -170,8 +191,6 @@ $( document ).on('click', '#pay-btn', function(){
         data: { id: $orderID} ,
         dataType: "text"
     });
-
-    console.log("pay");
 
     loadPendingOrders();
 })
@@ -249,3 +268,17 @@ function loadPendingOrders(){
         $("#pending-orders-list").load("pending_orders_loop.php");
     } , 1000);
 }
+
+
+$( document ).on('click', '.done-btn', function(){
+    $orderID = $(this).attr("data-pending-order-id");
+
+    var completeOrder = $.ajax({
+        type: 'POST',
+        url: "complete_order.php",
+        data: { id: $orderID} ,
+        dataType: "text"
+    });
+
+    loadPendingOrders();
+})
