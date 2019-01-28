@@ -75,7 +75,7 @@ include("get_items.php");
 
                         </div>
                     </div>
-                    <div class="order-options">
+                    <div class="order-options" style="display: none;">
                         <div class="current-order-header">
                             <h2>Options</h2>
                         </div>
