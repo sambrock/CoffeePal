@@ -11,16 +11,20 @@ foreach($pending_order_id as $id){
             foreach($pending_order_options as $option){
                 if($id["order_id"] == $option["order_id"] && $item["item_id"] == $option["product_id"]){
                     if($option["opt_1"]!=null){
-                        echo "<span class='pending-order-item-option'>+{$option["opt_1"]}</span>";
+                        echo "<span class='pending-order-item-option'>+ {$option["opt_1"]}</span>";
                     }
                     if($option["opt_2"]!=null){
-                        echo "<span class='pending-order-item-option'>+{$option["opt_2"]}</span>";                    }
+                        echo "<span class='pending-order-item-option'>+ {$option["opt_2"]}</span>";
+                    }
                     if($option["opt_3"]!=null){
-                        echo "<span class='pending-order-item-option'>+{$option["opt_3"]}</span>";                    }
+                        echo "<span class='pending-order-item-option'>+ {$option["opt_3"]}</span>";
+                    }
                     if($option["opt_4"]!=null){
-                        echo "<span class='pending-order-item-option'>+{$option["opt_4"]}</span>";                    }
+                        echo "<span class='pending-order-item-option'>+ {$option["opt_4"]}</span>";
+                    }
                     if($option["opt_5"]!=null){
-                        echo "<span class='pending-order-item-option'>+{$option["opt_5"]}</span>";                    }
+                        echo "<span class='pending-order-item-option'>+ {$option["opt_5"]}</span>";
+                    }
                 }
             }
         }
