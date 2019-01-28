@@ -11,6 +11,10 @@ h1,h2,h3{
     font-weight: 600;
     display: inline-block;
 }
+#logo{
+    padding: 10px;
+}
+
 /* order */
 .container{
     display: grid;
@@ -93,24 +97,13 @@ h1,h2,h3{
     position: absolute;
     height: 100%;
     width: 100%;
-    background: #1D2F52;
+    background: #f5f5f5;
     z-index: 1;
     left: 0;
     bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-#add-new-order{
-    border: none;
-    outline: none;
-    background: #fff;
-    color: #1D2F52;
-    border-radius: 20px;
-    cursor: pointer;
-    color: #1D2F52;
-    height: 40px;
-    width: 120px;
 }
 .current-order{
     background: #f5f5f5;
@@ -247,7 +240,7 @@ h1,h2,h3{
     margin: 20px 0 0 0;
     display: flex;
 }
-#add-btn, #pay-btn, .done-btn{
+#add-btn, #pay-btn, .done-btn, #add-new-order{
     border: none;
     outline: none;
     background: #1D2F52;
@@ -257,8 +250,12 @@ h1,h2,h3{
     height: 35px;
     width: 80px;
 }
-#add-btn:hover, #pay-btn:hover{
+#add-btn:hover, #pay-btn:hover, #add-new-order:hover{
     background: #101e2c;
+}
+#add-new-order{
+    height: 40px;
+    width: 120px;
 }
 .option{
     margin: 10px 0;
@@ -342,7 +339,9 @@ h1,h2,h3{
     display: inline-block;
     font-weight: 600;
     font-size: 20px;
-    margin: 0 0 10px 0;
+}
+.pending-order-item{
+    margin: 10px 0;
 }
 .pending-order-item-name{
     display: block;
