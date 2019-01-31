@@ -1,7 +1,6 @@
 <?php
-include("db_conn.php");
-include("current_order.php");
+include("model.php");
+$total = getOrderTotal();
 ?>
-
 <span id="total-txt">Total:</span>
-<span id="total-price">£<?php echo $current_order_total["total"]; ?></span>
+<span id="total-price">£<?php echo $total["total"]; ?></span>

@@ -1,14 +1,9 @@
 $( document ).ready(function(){
-    //Hide item buttons on load
-    //    $("#cold-drinks").hide();
-    //    $("#food").hide();
-    //    $("#snacks").hide();
-
     //Resize item buttons on load
     $(".item-btns-container").css("grid-auto-rows", $('.item-btn').width());
 
     //Load current order
-    $("#current-order-items").load("current_order_loop.php");
+    $("#current-order-items").load("current_order_item_view.php");
 
     //Load current order total
     $("#total-val").load("total.php");
@@ -42,13 +37,13 @@ function newOrder(){
 function showCurrentOrder(){
     $("#new-order").fadeOut(200);
     $(".order-options").slideDown(300);
-        
+
     setTimeout(function(){
-            $("#current-order-info").load("order_info.php");
-        } , 1000);
-        setTimeout(function(){
-            $("#current-order-items").load("current_order_loop.php");
-        } , 1200);
+        $("#current-order-info").load("current_order_info_view.php");
+    } , 1000);
+    setTimeout(function(){
+        $("#current-order-items").load("current_order_item_view.php");
+    } , 1200);
 }
 
 //Resize item buttons on resize
@@ -94,7 +89,7 @@ $("#add-new-order").click(function(){
     });
 
     setTimeout(function(){
-        $("#current-order-info").load("order_info.php");
+        $("#current-order-info").load("current_order_info_view.php");
     } , 1000);
 })
 
@@ -122,7 +117,7 @@ $("#add-btn").click(function(){
     });
 
     setTimeout(function(){
-        $("#current-order-items").load("current_order_loop.php");
+        $("#current-order-items").load("current_order_item_view.php");
     } , 1000);
 
     orderTotal();
@@ -135,13 +130,13 @@ $( document ).on('click', '.delete', function(){
     $orderItemID = $(this).attr("data-order-item-id");
     var deleteItem = $.ajax({
         type: 'POST',
-        url: "delete.php",
+        url: "delete_order_item.php",
         data: { id: $orderItemID} ,
         dataType: "text"
     });
 
     setTimeout(function(){
-        $("#current-order-items").load("current_order_loop.php");
+        $("#current-order-items").load("current_order_item_view.php");
     } , 1000);
 
     orderTotal();
@@ -166,21 +161,21 @@ $(".item-btn").click(function(){
     $("#option-item-price").attr("data-item-price", $itemPrice);
 
     options["itemPrice"] = parseFloat($itemPrice);
-    
+
     sortOptions();
 })
 
 //Cancel order
 $( document ).on('click', '#cancel-btn', function(){
     $orderID = $("#current-order-id").attr("data-order-id");
-    
+
     var deleteOrder = $.ajax({
         type: 'POST',
-        url: "delete_order.php",
+        url: "cancel_order.php",
         data: { id: $orderID} ,
         dataType: "text"
     });
-    
+
     newOrder();
 })
 
@@ -196,7 +191,7 @@ $( document ).on('click', '#pay-btn', function(){
     });
 
     loadPendingOrders();
-    
+
     newOrder();
 })
 
@@ -234,9 +229,9 @@ $(".size-btn").click(function(){
 
     $("#add-in-size").remove();
     $(".option-list").append("<div class='option-added' id='add-in-size' data-option-name='"+$optionName+"'>\
-<span class='option-added-name'>+ "+$optionName+"</span>\
-<span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
-</div>");
+    <span class='option-added-name'>+ "+$optionName+"</span>\
+    <span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
+    </div>");
 
     priceUpdate();
 })
@@ -250,9 +245,9 @@ $(".option-add-in").change(function(){
 
     $("#add-in-"+$optionID).remove();
     $(".option-list").append("<div class='option-added' id='add-in-"+$optionID+"' data-option-name='"+$optionName+"'>\
-<span class='option-added-name'>+ "+$optionName+"</span>\
-<span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
-</div>");
+    <span class='option-added-name'>+ "+$optionName+"</span>\
+    <span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
+    </div>");
 
     priceUpdate();
 })
@@ -270,8 +265,7 @@ function clearAllOptions(){
 //Load pending orders
 function loadPendingOrders(){
     setTimeout(function(){
-        $("#pending-orders-count").load("pending_order_count.php");
-        $("#pending-orders-list").load("pending_orders_loop.php");
+        $("#pending-orders").load("pending_orders_view.php");
     } , 1000);
 }
 
@@ -292,7 +286,7 @@ $( document ).on('click', '.done-btn', function(){
 //Sort options depending on type
 function sortOptions(){
     $(".option").hide();
-    
+
     $itemType = $(".item-btn.active").attr("data-type");
 
     if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea"){
