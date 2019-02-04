@@ -15,6 +15,40 @@ h1,h2,h3{
     padding: 10px;
 }
 
+/* login */
+.login-container{
+    display: flex;
+    justify-content: center;
+}
+.users-container{
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-gap: 20px;
+    position: relative;
+}
+.user{
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: relative;
+    background: #e5e5e5;
+    cursor: pointer;
+    height: 150px;
+    padding: 10px;
+}
+#login-btn{
+    border: none;
+    outline: none;
+    background: #1D2F52;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 45px;
+    width: 150px;
+}
+#login-btn:hover{
+    background: #101e2c;
+}
+
 /* order */
 .container{
     display: grid;
@@ -178,7 +212,7 @@ h1,h2,h3{
     cursor: pointer;
 }
 .delete:hover{
-    color: #3da1de;
+    color: #101e2c;
 }
 #current-order-total{
     height: 50px;
