@@ -3,10 +3,10 @@ $( document ).ready(function(){
     $(".item-btns-container").css("grid-auto-rows", $('.item-btn').width());
 
     //Load current order
-    $("#current-order-items").load("current_order_item_view.php");
+    $("#current-order-items").load("../views/current-order-item-view.php");
 
     //Load current order total
-    $("#total-val").load("total.php");
+    $("#total-val").load("controllers/total.php");
 
     //Check status of previous order
     orderStatus();
@@ -39,10 +39,10 @@ function showCurrentOrder(){
     $(".order-options").slideDown(300);
 
     setTimeout(function(){
-        $("#current-order-info").load("current_order_info_view.php");
+        $("#current-order-info").load("views/current-order-info-view.php");
     } , 1000);
     setTimeout(function(){
-        $("#current-order-items").load("current_order_item_view.php");
+        $("#current-order-items").load("views/current-order-item-view.php");
     } , 1200);
 }
 
@@ -85,18 +85,18 @@ $("#add-new-order").click(function(){
     showCurrentOrder();
 
     var addNewOrder = $.ajax({
-        url: "new_order.php"
+        url: "controllers/new-order.php"
     });
 
     setTimeout(function(){
-        $("#current-order-info").load("current_order_info_view.php");
+        $("#current-order-info").load("views/current-order-info-view.php");
     } , 1000);
 })
 
 //Get current order total
 function orderTotal(){
     setTimeout(function(){
-        $("#current-order-total").load("total.php");
+        $("#current-order-total").load("controllers/total.php");
     } , 1000);
 }
 
@@ -111,13 +111,13 @@ $("#add-btn").click(function(){
 
     var addItem = $.ajax({
         type: 'POST',
-        url: "add.php",
+        url: "controllers/add.php",
         data: { id: $itemID, price: $itemPrice, opt_1: $opt_1, opt_2: $opt_2, opt_3: $opt_3, opt_4: $opt_4 },
         dataType: "text"
     });
 
     setTimeout(function(){
-        $("#current-order-items").load("current_order_item_view.php");
+        $("#current-order-items").load("views/current-order-item-view.php");
     } , 1000);
 
     orderTotal();
@@ -130,13 +130,13 @@ $( document ).on('click', '.delete', function(){
     $orderItemID = $(this).attr("data-order-item-id");
     var deleteItem = $.ajax({
         type: 'POST',
-        url: "delete_order_item.php",
+        url: "controllers/delete-order-item.php",
         data: { id: $orderItemID} ,
         dataType: "text"
     });
 
     setTimeout(function(){
-        $("#current-order-items").load("current_order_item_view.php");
+        $("#current-order-items").load("views/current-order-item-view.php");
     } , 1000);
 
     orderTotal();
@@ -171,7 +171,7 @@ $( document ).on('click', '#cancel-btn', function(){
 
     var deleteOrder = $.ajax({
         type: 'POST',
-        url: "cancel_order.php",
+        url: "controllers/cancel-order.php",
         data: { id: $orderID} ,
         dataType: "text"
     });
@@ -185,7 +185,7 @@ $( document ).on('click', '#pay-btn', function(){
 
     var processOrder = $.ajax({
         type: 'POST',
-        url: "process_order.php",
+        url: "controllers/process-order.php",
         data: { id: $orderID} ,
         dataType: "text"
     });
@@ -265,7 +265,8 @@ function clearAllOptions(){
 //Load pending orders
 function loadPendingOrders(){
     setTimeout(function(){
-        $("#pending-orders").load("pending_orders_view.php");
+        $("#pending-orders").load("views/pending-orders-view.php");
+        //orderTime();
     } , 1000);
 }
 
@@ -275,7 +276,7 @@ $( document ).on('click', '.done-btn', function(){
 
     var completeOrder = $.ajax({
         type: 'POST',
-        url: "complete_order.php",
+        url: "controllers/complete-order.php",
         data: { id: $orderID} ,
         dataType: "text"
     });
@@ -302,3 +303,7 @@ function sortOptions(){
         $("#option-tea-bags").show();
     }
 }
+
+window.setInterval(function(){
+  loadPendingOrders();
+}, 1000);

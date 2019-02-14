@@ -369,10 +369,16 @@ h1,h2,h3{
     box-sizing: border-box;
     position: relative;
 }
+.pending-order-header{
+    display: flex;
+}
 .pending-order-id{
     display: inline-block;
     font-weight: 600;
     font-size: 20px;
+}
+.pending-order-time{
+    margin: 0 0 0 auto;
 }
 .pending-order-item{
     margin: 10px 0;

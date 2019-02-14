@@ -1,5 +1,5 @@
 <?php
-require_once("model.php");
+require_once("../models/model.php");
 
 $id = $_POST["id"];
 

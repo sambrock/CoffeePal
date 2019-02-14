@@ -1,5 +1,5 @@
-<?php 
-require_once("model.php");
+<?php
+require_once("../models/model.php");
 
 $status = "Complete";
 $orderId = $_POST["id"];

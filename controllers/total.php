@@ -1,5 +1,5 @@
 <?php
-include("model.php");
+include("../models/model.php");
 $total = getOrderTotal();
 ?>
 <span id="total-txt">Total:</span>

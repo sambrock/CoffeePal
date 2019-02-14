@@ -121,7 +121,7 @@ function processOrder($status, $orderId){
 }
 function getPendingOrderIds(){
     $conn = getConnection();
-    $query = "SELECT orders.id as order_id FROM orders WHERE status = 'Pending' ORDER BY id DESC";
+    $query = "SELECT orders.id as order_id, date_time as order_time FROM orders WHERE status = 'Pending' ORDER BY id ASC";
     $stmt=$conn->prepare($query);
     $stmt->execute();
     $pending_order_ids=$stmt->fetchAll();
@@ -147,5 +147,17 @@ function getOrderStatus(){
     $status=$stmt->fetch();
     closeConnection($conn);
     return $status;
+}
+function timeSinceOrder($orderTime){
+    date_default_timezone_set('Europe/London');
+
+    $date1 = $orderTime;
+    $date2 = date("Y-m-d H:i:s");
+
+    $date1Timestamp = strtotime($date1);
+    $date2Timestamp = strtotime($date2);
+
+    $interval = $date2Timestamp - $date1Timestamp;
+    return $interval;
 }
 ?>

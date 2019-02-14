@@ -1,5 +1,5 @@
 <?php
-include("model.php");
+include("../models/model.php");
 $currentOrderId = getOrderId();
 $currentOrder = getCurrentOrder();
 

@@ -46,7 +46,7 @@
         </div>
         <div class="order-info">
             <div id="order-status-check">
-                <?php include("order_status_check.php"); ?>
+                <?php include("controllers/order-status-check.php"); ?>
             </div>
             <div class="current-order">
                 <div id="new-order" style="display: none;">
@@ -115,4 +115,4 @@
         <div id="pending-orders"></div>
     </div>
 </main>
-<script src="js.js"></script>
+<script src="js/js.js"></script>
