@@ -69,7 +69,7 @@
                 <div class="option" id="option-size" style="display: none;">
                     <div class="option-header">Size:</div>
                     <div class="option-inputs">
-                        <div class="size-btn active" id="default-size" data-size="small" data-price="0" data-option-name="Small"><i class="fas fa-coffee" id="small-size"></i></div>
+                        <div class="size-btn" id="default-size" data-size="small" data-price="0" data-option-name="Small"><i class="fas fa-coffee" id="small-size"></i></div>
                         <div class="size-btn" data-size="medium" data-price="0.20" data-option-name="Medium"><i class="fas fa-coffee" id="medium-size"></i></div>
                         <div class="size-btn" data-size="large" data-price="0.40" data-option-name="Large"><i class="fas fa-coffee" id="large-size"></i></div>
                     </div>
