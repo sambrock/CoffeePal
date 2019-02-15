@@ -318,6 +318,13 @@ h1,h2,h3{
 .option-added-price{
     margin: 0 120px 0 auto;
 }
+label{
+    width: 120px;
+}
+.option-add-in{
+    border: none;
+    float: left;
+}
 .size-btn{
     height: 60px;
     width: 60px;
