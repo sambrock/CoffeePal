@@ -77,37 +77,43 @@
                 <div class="option-header">Add-ins:</div>
                 <div class="option" id="option-cream" style="display: none;">
                     <div class="option-inputs">
-                        <label>Splash of cream:
+                        <label>Splash of cream:</label>
                             <select class="option-add-in" id="cream">
-                                <option value="0" hidden>Select</option>
+                                <option value="0">No Splash of Cream</option>
                                 <option value="1" data-option-name="Extra Splash of Cream" data-price="0">Extra Splash of Cream</option>
                                 <option value="2" data-option-name="Light Splash of Cream" data-price="0">Light Splash of Cream</option>
                                 <option value="3" data-option-name="Splash of Cream" data-price="0">Splash of Cream</option>
                             </select>
-                        </label>
                     </div>
                 </div>
                 <div class="option" id="option-milk" style="display: none;">
                     <div class="option-inputs">
-                        <label>Splash of milk:
+                        <label>Splash of milk:</label>
                             <select class="option-add-in" id="milk">
-                                <option value="0" hidden>Select</option>
+                                <option value="0">No Splash of Milk</option>
                                 <option value="1" data-option-name="Extra Splash of Milk" data-price="0">Extra Splash of Milk</option>
                                 <option value="2" data-option-name="Light Splash of Milk" data-price="0">Light Splash of Milk</option>
                                 <option value="3" data-option-name="Splash of Milk" data-price="0">Splash of Milk</option>
                             </select>
-                        </label>
+                    </div>
+                </div>
+                <div class="option" id="option-whipped-cream" style="display: none;">
+                    <div class="option-inputs">
+                        <label>Whipped Cream:</label>
+                            <select class="option-add-in" id="milk">
+                                <option value="0">No Whipped Cream</option>
+                                <option value="1" data-option-name="Whipped Cream" data-price="0">Whipped Cream</option>
+                            </select>
                     </div>
                 </div>
                 <div class="option" id="option-tea-bags" style="display: none;">
                     <div class="option-inputs">
-                        <label>Tea-bags:
+                        <label>Tea-bags:</label>
                             <select class="option-add-in" id="tea-bag">
                                 <option value="0" data-option-name="1 Tea Bag" data-price="0">1 Tea Bag</option>
                                 <option value="1" data-option-name="2 Tea Bags" data-price="0.10">2 Tea Bags</option>
                                 <option value="2" data-option-name="3 Tea Bags" data-price="0.20">3 Tea Bags</option>
                             </select>
-                        </label>
                     </div>
                 </div>
             </div>
