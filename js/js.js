@@ -204,7 +204,7 @@ $( document ).on('click', '#pay-btn', function(){
 
         newOrder();
     }else{
-        console.log("empty");
+        alert("This order is empty.");
     }
 
 
@@ -244,9 +244,9 @@ $(".size-btn").click(function(){
 
     $("#add-in-size").remove();
     $(".option-list").append("<div class='option-added' id='add-in-size' data-option-name='"+$optionName+"'>\
-<span class='option-added-name'>+ "+$optionName+"</span>\
-<span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
-</div>");
+    <span class='option-added-name'>+ "+$optionName+"</span>\
+    <span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
+    </div>");
 
     priceUpdate();
 })
@@ -258,13 +258,17 @@ $(".option-add-in").change(function(){
 
     options[$optionID] = $optionPrice;
 
-    $("#add-in-"+$optionID).remove();
-    $(".option-list").append("<div class='option-added' id='add-in-"+$optionID+"' data-option-name='"+$optionName+"'>\
-<span class='option-added-name'>+ "+$optionName+"</span>\
-<span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
-</div>");
+    if($('option:selected', this).val()!=0){
+        $("#add-in-"+$optionID).remove();
+        $(".option-list").append("<div class='option-added' id='add-in-"+$optionID+"' data-option-name='"+$optionName+"'>\
+        <span class='option-added-name'>+ "+$optionName+"</span>\
+        <span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
+        </div>");
 
-    priceUpdate();
+        priceUpdate();
+    }else{
+        $("#add-in-"+$optionID).remove();
+    }
 })
 
 //Clear options
@@ -320,6 +324,9 @@ function sortOptions(){
     if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha"){
         $("#option-cream").show();
     }
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha"){
+        $("#option-whipped-cream").show();
+    }
     if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea"){
         $("#option-milk").show();
     }
@@ -329,9 +336,9 @@ function sortOptions(){
 }
 
 //Update pending orders every second
-//window.setInterval(function(){
-//  loadPendingOrders();
-//}, 1000);
+window.setInterval(function(){
+  loadPendingOrders();
+}, 1000);
 
 //Order process validation
 function orderValid(){
@@ -353,8 +360,3 @@ function itemValid(){
         }
     }return true;
 }
-
-//$("#logo").click(function(){
-//    $type = $(".item-btn.active").attr('data-type');
-//    console.log($type);
-//})
