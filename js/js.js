@@ -128,6 +128,7 @@ $("#add-btn").click(function(){
 //Delete item from current order
 $( document ).on('click', '.delete', function(){
     $orderItemID = $(this).attr("data-order-item-id");
+
     var deleteItem = $.ajax({
         type: 'POST',
         url: "controllers/delete-order-item.php",
@@ -181,18 +182,24 @@ $( document ).on('click', '#cancel-btn', function(){
 
 //Process order
 $( document ).on('click', '#pay-btn', function(){
-    $orderID = $("#current-order-id").attr("data-order-id");
+    if(orderValid()==true){
+        $orderID = $("#current-order-id").attr("data-order-id");
 
-    var processOrder = $.ajax({
-        type: 'POST',
-        url: "controllers/process-order.php",
-        data: { id: $orderID} ,
-        dataType: "text"
-    });
+        var processOrder = $.ajax({
+            type: 'POST',
+            url: "controllers/process-order.php",
+            data: { id: $orderID} ,
+            dataType: "text"
+        });
 
-    loadPendingOrders();
+        loadPendingOrders();
 
-    newOrder();
+        newOrder();
+    }else{
+        console.log("empty");
+    }
+
+
 })
 
 //Option prices
@@ -304,6 +311,16 @@ function sortOptions(){
     }
 }
 
-window.setInterval(function(){
-  loadPendingOrders();
-}, 1000);
+//Update pending orders every second
+//window.setInterval(function(){
+//  loadPendingOrders();
+//}, 1000);
+
+//Check to see if order has any items
+function orderValid(){
+    if($(".current-order-item").length){
+        return true;
+    }else{
+        return false;
+    }
+}
