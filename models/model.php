@@ -110,11 +110,12 @@ function cancelOrder($id){
     $stmt2->execute();
     closeConnection($conn);
 }
-function processOrder($status, $orderId){
+function processOrder($status, $orderTime, $orderId){
     $conn = getConnection();
-    $query = "UPDATE orders SET status = :status WHERE id=:order_id";
+    $query = "UPDATE orders SET status = :status, date_time = :order_time WHERE id=:order_id";
     $stmt=$conn->prepare($query);
     $stmt->bindValue(":status", $status);
+    $stmt->bindValue(":order_time", $orderTime);
     $stmt->bindValue(":order_id", $orderId);
     $stmt->execute();
     closeConnection($conn);

@@ -379,6 +379,8 @@ h1,h2,h3{
 }
 .pending-order-time{
     margin: 0 0 0 auto;
+    background: #CECECE;
+    padding: 0 10px;
 }
 .pending-order-item{
     margin: 10px 0;

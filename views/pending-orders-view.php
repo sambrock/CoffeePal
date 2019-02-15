@@ -27,7 +27,7 @@ function countOrders($pendingOrderIds){
         //Get time difference
         $orderTime = $orderId["order_time"];
         $interval = timeSinceOrder($orderTime);
-        echo "<span class='pending-order-time'>$interval</span>";
+        echo "<span class='pending-order-time'>".$interval."s</span>";
         echo "</div>";
         foreach($pendingOrderItems as $orderItem){
             if($orderId["order_id"] == $orderItem["order_id"]){
