@@ -1,4 +1,5 @@
 $( document ).ready(function(){
+    //Order
     //Resize item buttons on load
     $(".item-btns-container").css("grid-auto-rows", $('.item-btn').width());
 
@@ -13,12 +14,29 @@ $( document ).ready(function(){
 
     //Load pending orders
     loadPendingOrders();
+
+})
+
+//Menu
+$("#menu-btn").click(function(){
+    $("#menu").animate({width:'toggle'},350);
+    console.log("click");
+})
+
+//Login
+$(".user").click(function(){
+    $(".user").removeClass("active");
+    $(this).addClass("active");
+
+    $("#password-container").show();
+
+    $userId = $(this).attr("data-user-id");
+    $("#user-id").val($userId);
 })
 
 //Check last order status
 function orderStatus(){
     $orderStatus = $("#order-check").attr("data-status");
-    console.log($orderStatus);
     if($("#order-check").attr("data-status")==="Processing"){
         showCurrentOrder();
     }else{

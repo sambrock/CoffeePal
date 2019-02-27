@@ -161,4 +161,23 @@ function timeSinceOrder($orderTime){
     $interval = $date2Timestamp - $date1Timestamp;
     return $interval;
 }
+function getAllEmployees(){
+    $conn = getConnection();
+    $query="SELECT * FROM employees";
+    $stmt=$conn->prepare($query);
+    $stmt->execute();
+    $allEmployees=$stmt->fetchAll();
+    closeConnection($conn);
+    return $allEmployees;
+}
+function getLogin($id){
+    $conn = getConnection();
+    $query="SELECT * FROM employees WHERE id = :id";
+    $stmt=$conn->prepare($query);
+    $stmt->bindValue(":id", $id);
+    $stmt->execute();
+    $login=$stmt->fetch();
+    closeConnection($conn);
+    return $login;
+}
 ?>

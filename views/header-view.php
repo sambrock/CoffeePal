@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,4 +13,11 @@
     <body>
         <header>
             <img id="logo" src="img/logo.svg" height="60">
+            <?php if(isset($_SESSION["name"])){ ?>
+            <div class="user-details">
+                <img  class="user-img" src="img/employees/4.jpg">
+                <span class="user-name"><?php echo $_SESSION["name"];?></span>
+                <a href="logout.php" id="logout-btn">Logout</a>
+            </div>
+            <?php } ?>
         </header>
