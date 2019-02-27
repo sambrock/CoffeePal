@@ -151,7 +151,7 @@ $("#add-btn").click(function(){
             alert("Please select a size");
         }
     }else{
-        alert("There is no order");
+        alert("Please add a new order");
     }
 })
 
