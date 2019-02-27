@@ -21,13 +21,19 @@ function countOrders($pendingOrderIds){
 <div id="pending-orders-list">
     <?php
     foreach($pendingOrderIds as $orderId){
-        echo "<div class='pending-order'>";
-        echo "<div class='pending-order-header'>";
-        echo "<span class='pending-order-id'>Order #{$orderId["order_id"]}</span>";
         //Get time difference
         $orderTime = $orderId["order_time"];
         $interval = timeSinceOrder($orderTime);
-        echo "<span class='pending-order-time'>".$interval."s</span>";
+        $time = timeFormat($interval);
+        if($interval > 119){
+            echo "<div class='pending-order overdue'>";
+        }else{
+            echo "<div class='pending-order'>";
+        }
+
+        echo "<div class='pending-order-header'>";
+        echo "<span class='pending-order-id'>Order #{$orderId["order_id"]}</span>";
+        echo "<span class='pending-order-time' data-interval='$interval'>$time</span>";
         echo "</div>";
         foreach($pendingOrderItems as $orderItem){
             if($orderId["order_id"] == $orderItem["order_id"]){

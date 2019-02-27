@@ -439,6 +439,9 @@ label{
     box-sizing: border-box;
     position: relative;
 }
+.pending-order.overdue{
+    border: 2px #ff0000 solid;
+}
 .pending-order-header{
     display: flex;
 }
@@ -451,6 +454,10 @@ label{
     margin: 0 0 0 auto;
     background: #e5e5e5;
     padding: 0 10px;
+}
+.pending-order.overdue .pending-order-time{
+    background: #ff0000;
+    color: #fff;
 }
 .pending-order-item{
     margin: 10px 0;

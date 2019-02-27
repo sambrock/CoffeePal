@@ -160,7 +160,12 @@ function timeSinceOrder($orderTime){
     $date2Timestamp = strtotime($date2);
 
     $interval = $date2Timestamp - $date1Timestamp;
+
     return $interval;
+}
+function timeFormat($interval){
+    $time = gmdate("i:s", $interval);
+    return $time;
 }
 function getAllEmployees(){
     $conn = getConnection();

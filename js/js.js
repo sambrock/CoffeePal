@@ -396,3 +396,16 @@ function orderProcessing(){
         return true;
     }
 }
+
+function orderIntervalCheck(){
+    $interval=$(".pending-order-time").attr("data-interval");
+    $i = parseint($interval);
+
+    if($i>120){
+        return true;
+    }
+}
+
+function orderOverdue(){
+
+}
