@@ -20,7 +20,7 @@ if(!isset($_SESSION))
             <div class="user-details">
                 <img  class="user-img" src="img/employees/4.jpg">
                 <span class="user-name"><?php echo $_SESSION["name"];?></span>
-                <a href="logout.php" id="logout-btn">Logout</a>
+                <a href="controllers/logout.php" id="logout-btn">Logout</a>
             </div>
             <?php } ?>
         </header>
