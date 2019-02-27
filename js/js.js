@@ -32,6 +32,8 @@ $(".user").click(function(){
 
     $userId = $(this).attr("data-user-id");
     $("#user-id").val($userId);
+
+    $("#password-error").remove();
 })
 
 //Check last order status
@@ -119,35 +121,37 @@ function orderTotal(){
 
 //Add item to current order
 $("#add-btn").click(function(){
+    if(orderProcessing()==true){
+        if(itemValid()==true){
+            $itemID = $("#option-item-name").attr("data-item-id");
+            $itemPrice = $("#option-item-price").attr("data-item-price");
+            $opt_1 = $("#add-in-size").attr("data-option-name");
+            $opt_2 = $("#add-in-cream").attr("data-option-name");
+            $opt_3 = $("#add-in-milk").attr("data-option-name");
+            $opt_4 = $("#add-in-tea-bag").attr("data-option-name");
 
-    if(itemValid()==true){
-        $itemID = $("#option-item-name").attr("data-item-id");
-        $itemPrice = $("#option-item-price").attr("data-item-price");
-        $opt_1 = $("#add-in-size").attr("data-option-name");
-        $opt_2 = $("#add-in-cream").attr("data-option-name");
-        $opt_3 = $("#add-in-milk").attr("data-option-name");
-        $opt_4 = $("#add-in-tea-bag").attr("data-option-name");
+            var addItem = $.ajax({
+                type: 'POST',
+                url: "controllers/add.php",
+                data: { id: $itemID, price: $itemPrice, opt_1: $opt_1, opt_2: $opt_2, opt_3: $opt_3, opt_4: $opt_4 },
+                dataType: "text"
+            });
 
-        var addItem = $.ajax({
-            type: 'POST',
-            url: "controllers/add.php",
-            data: { id: $itemID, price: $itemPrice, opt_1: $opt_1, opt_2: $opt_2, opt_3: $opt_3, opt_4: $opt_4 },
-            dataType: "text"
-        });
+            setTimeout(function(){
+                $("#current-order-items").load("views/current-order-item-view.php");
+            } , 1000);
 
-        setTimeout(function(){
-            $("#current-order-items").load("views/current-order-item-view.php");
-        } , 1000);
+            orderTotal();
 
-        orderTotal();
+            hideOptions();
 
-        hideOptions();
-
-        clearAllOptions();
+            clearAllOptions();
+        }else{
+            alert("Please select a size");
+        }
     }else{
-        alert("Please select a size");
+        alert("There is no order");
     }
-
 })
 
 //Delete item from current order
@@ -279,9 +283,9 @@ $(".option-add-in").change(function(){
     if($('option:selected', this).val()!=0){
         $("#add-in-"+$optionID).remove();
         $(".option-list").append("<div class='option-added' id='add-in-"+$optionID+"' data-option-name='"+$optionName+"'>\
-        <span class='option-added-name'>+ "+$optionName+"</span>\
-        <span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
-        </div>");
+    <span class='option-added-name'>+ "+$optionName+"</span>\
+    <span class='option-added-price'>£"+$optionPrice.toFixed(2)+"</span>\
+    </div>");
 
         priceUpdate();
     }else{
@@ -301,6 +305,7 @@ function clearAllOptions(){
 
 //Hide options tab
 function hideOptions(){
+    $(".item-btn").removeClass("active");
     $(".order-options").hide();
 }
 
@@ -355,7 +360,7 @@ function sortOptions(){
 
 //Update pending orders every second
 window.setInterval(function(){
-  loadPendingOrders();
+    loadPendingOrders();
 }, 1000);
 
 //Order process validation
@@ -377,4 +382,13 @@ function itemValid(){
             return false;
         }
     }return true;
+}
+
+//Order processing check
+function orderProcessing(){
+    if($("#current-order-info").is(':empty')){
+        return false;
+    }else{
+        return true;
+    }
 }
