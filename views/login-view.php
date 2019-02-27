@@ -12,6 +12,9 @@
     }
     echo "</div>";
     echo "<input type='hidden' name='id' id='user-id' value=''>";
+    if(isset($error)){
+        echo "<span id='password-error'>{$error}</span>";
+    }
     echo "<div id='password-container' style='display: none;'>";
     echo '<input id="password-input" type="password" name="password">';
     echo '<button type="submit" name="login" id="login-btn">Login</button>';

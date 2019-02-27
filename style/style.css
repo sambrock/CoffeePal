@@ -41,6 +41,9 @@ header{
     text-decoration: none;
     color: #000;
 }
+#password-error{
+    color: #ff0000;
+}
 
 /* login */
 .login-container{

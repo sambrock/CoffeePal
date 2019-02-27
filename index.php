@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
         $_SESSION["name"] = $name;
         header("Location: order.php");
     } else {
-        echo "Password incorrect";
+        $error="Password incorrect";
     }
 }
 
