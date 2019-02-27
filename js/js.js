@@ -129,11 +129,12 @@ $("#add-btn").click(function(){
             $opt_2 = $("#add-in-cream").attr("data-option-name");
             $opt_3 = $("#add-in-milk").attr("data-option-name");
             $opt_4 = $("#add-in-tea-bag").attr("data-option-name");
+            $opt_5 = $("#add-in-ice").attr("data-option-name");
 
             var addItem = $.ajax({
                 type: 'POST',
                 url: "controllers/add.php",
-                data: { id: $itemID, price: $itemPrice, opt_1: $opt_1, opt_2: $opt_2, opt_3: $opt_3, opt_4: $opt_4 },
+                data: { id: $itemID, price: $itemPrice, opt_1: $opt_1, opt_2: $opt_2, opt_3: $opt_3, opt_4: $opt_4, opt_5: $opt_5 },
                 dataType: "text"
             });
 
@@ -341,7 +342,7 @@ function sortOptions(){
 
     $itemType = $(".item-btn.active").attr("data-type");
 
-    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea"){
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea" || $itemType==="Iced"){
         $("#option-size").show();
     }
     if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha"){
@@ -355,6 +356,9 @@ function sortOptions(){
     }
     if($itemType==="Tea"){
         $("#option-tea-bags").show();
+    }
+    if($itemType==="Iced"){
+        $("#option-ice").show();
     }
 }
 

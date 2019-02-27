@@ -116,6 +116,16 @@
                             </select>
                     </div>
                 </div>
+                <div class="option" id="option-ice" style="display: none;">
+                    <div class="option-inputs">
+                        <label>Ice:</label>
+                            <select class="option-add-in" id="ice">
+                                <option value="1" data-option-name="No Ice" data-price="0">No Ice</option>
+                                <option value="0" selected data-option-name="No Ice" data-price="0.00">Ice</option>
+                                <option value="2" data-option-name="Extra Ice" data-price="0.00">Extra Ice</option>
+                            </select>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="pending-orders"></div>

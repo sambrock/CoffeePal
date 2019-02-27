@@ -75,10 +75,10 @@ function getOrderTotal(){
     closeConnection($conn);
     return $current_order_total;
 }
-function addNewItem($productId, $productPrice, $opt1, $opt2, $opt3, $opt4){
+function addNewItem($productId, $productPrice, $opt1, $opt2, $opt3, $opt4, $opt5){
     $conn = getConnection();
     $orderId = getOrderId();
-    $query="INSERT INTO order_items(order_id,product_id, price, opt_1, opt_2, opt_3, opt_4) values (:order_id, :product_id, :product_price, :opt_1, :opt_2, :opt_3, :opt_4)";
+    $query="INSERT INTO order_items(order_id,product_id, price, opt_1, opt_2, opt_3, opt_4, opt_5) values (:order_id, :product_id, :product_price, :opt_1, :opt_2, :opt_3, :opt_4, :opt_5)";
     $stmt=$conn->prepare($query);
     $stmt->bindValue(":order_id", $orderId);
     $stmt->bindValue(":product_id", $productId);
@@ -87,6 +87,7 @@ function addNewItem($productId, $productPrice, $opt1, $opt2, $opt3, $opt4){
     $stmt->bindValue(":opt_2", $opt2);
     $stmt->bindValue(":opt_3", $opt3);
     $stmt->bindValue(":opt_4", $opt4);
+    $stmt->bindValue(":opt_5", $opt5);
     $stmt->execute();
     closeConnection($conn);
 }
