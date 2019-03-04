@@ -169,7 +169,7 @@ function timeFormat($interval){
 }
 function getAllEmployees(){
     $conn = getConnection();
-    $query="SELECT * FROM employees";
+    $query="SELECT *, employees.id AS user_id, roles.role_name AS role FROM employees INNER JOIN roles ON employees.role_id=roles.id";
     $stmt=$conn->prepare($query);
     $stmt->execute();
     $allEmployees=$stmt->fetchAll();

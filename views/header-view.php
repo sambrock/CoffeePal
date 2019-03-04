@@ -18,7 +18,7 @@ if(!isset($_SESSION))
             <img id="logo" src="img/logo.svg" height="60">
             <?php if(isset($_SESSION["name"])){ ?>
             <div class="user-details">
-                <img  class="user-img" src="img/employees/4.jpg">
+                <img  class="user-img" src="img/employees/<?php echo $_SESSION["id"];?>.jpg">
                 <span class="user-name"><?php echo $_SESSION["name"];?></span>
                 <a href="controllers/logout.php" id="logout-btn">Logout</a>
             </div>

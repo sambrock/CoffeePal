@@ -37,6 +37,10 @@ header{
     color: #1D2F52;
     font-weight: 600;
 }
+.user-role{
+    margin: 0 20px 0 auto;
+    color: #c4c4c4;
+}
 #logout-btn{
     text-decoration: none;
     color: #000;

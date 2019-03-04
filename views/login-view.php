@@ -5,9 +5,10 @@
     echo "<form action='{$_SERVER['PHP_SELF']}' method='POST'>";
     echo "<div class='users-container'>";
     foreach($employees as $employee){
-        echo "<div class='user' data-user-id='{$employee['id']}'>";
-        echo "<img class='user-img' src='img/employees/{$employee['id']}.jpg'>";
+        echo "<div class='user' data-user-id='{$employee['user_id']}'>";
+        echo "<img class='user-img' src='img/employees/{$employee['user_id']}.jpg'>";
         echo "<span class='user-name'>{$employee['first_name']} {$employee['last_name']}</span>";
+        echo "<span class='user-role'>{$employee['role']}</span>";
         echo '</div>';
     }
     echo "</div>";
