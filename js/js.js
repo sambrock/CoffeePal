@@ -194,6 +194,8 @@ $(".item-btn").click(function(){
 
     options["itemPrice"] = parseFloat($itemPrice);
 
+    itemAllergens();
+
     sortOptions();
 })
 
@@ -342,16 +344,16 @@ function sortOptions(){
 
     $itemType = $(".item-btn.active").attr("data-type");
 
-    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea" || $itemType==="Iced"){
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea" || $itemType==="Iced" || $itemType==="Cappuccino" || $itemType==="Americano"){
         $("#option-size").show();
     }
-    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha"){
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Cappuccino" || $itemType==="Americano"){
         $("#option-cream").show();
     }
     if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha"){
         $("#option-whipped-cream").show();
     }
-    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea"){
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea" || $itemType==="Cappuccino"){
         $("#option-milk").show();
     }
     if($itemType==="Tea"){
@@ -406,6 +408,29 @@ function orderIntervalCheck(){
     }
 }
 
-function orderOverdue(){
+function itemAllergens(){
+    $("#item-allergens").empty();
 
+    $itemType = $(".item-btn.active").attr("data-type");
+
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea" || $itemType==="Iced" || $itemType==="Hot Chocolate" || $itemType==="Cappuccino" || $itemType==="Americano"){
+        $("#item-allergens").append("<span>Contains: <b>Milk</b></spam>");
+    }
+    if($itemType==="Biscuits"){
+        $("#item-allergens").append("<span>Contains: <b>Wheat</b></spam>")
+    }
+    if($itemType==="Crisps"){
+        $("#item-allergens").append("<span>Contains: <b>Gluten</b>, <b>Dairy</b></spam>")
+    }
+    if($itemType==="Hot Sandwich"){
+        $("#item-allergens").append("<span>Contains: <b>Wheat</b>, <b>Milk</b>, <b>Soya</b>, <b>Barley</b></spam>")
+    }
+    if($itemType==="Cold Sandwich"){
+        $("#item-allergens").append("<span>Contains: <b>Wheat</b>, <b>Milk</b></spam>")
+    }
+    if($itemType==="Chocolate"){
+        $("#item-allergens").append("<span>Contains: <b>Milk</b>, <b>Egg</b>, <b>Barley</b>, <b>Soya</b></spam>")
+    }
+
+    $("#item-allergens").delay(300).show(0);
 }

@@ -431,6 +431,16 @@ label{
 #large-size{
     font-size: 40px;
 }
+#item-allergens{
+    position: absolute;
+    bottom: 10px;
+    color: #808080;
+    padding: 5px 10px;
+    right: 10px;
+}
+#item-allergens-contents{
+    display: inline;
+}
 #pending-orders{
     background: #fff;
     padding: 20px;

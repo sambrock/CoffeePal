@@ -126,6 +126,7 @@
                             </select>
                     </div>
                 </div>
+                <div id="item-allergens" style="display: none;"></div>
             </div>
         </div>
         <div id="pending-orders"></div>
