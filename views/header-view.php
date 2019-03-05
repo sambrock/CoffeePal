@@ -1,8 +1,8 @@
 <?php
 if(!isset($_SESSION))
-    {
-        session_start();
-    }
+{
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,11 @@ if(!isset($_SESSION))
             <div class="user-details">
                 <img  class="user-img" src="img/employees/<?php echo $_SESSION["id"];?>.jpg">
                 <span class="user-name"><?php echo $_SESSION["name"];?></span>
+                <?php if($_SESSION["id"]==1){ if($title=="Orders"){ ?>
+                <a href="reports.php" id="reports-btn">Reports</a>
+                <?php }elseif($title=="Reports"){ ?>
+                <a href="order.php" id="reports-btn">Orders</a>
+                <?php } } ?>
                 <a href="controllers/logout.php" id="logout-btn">Logout</a>
             </div>
             <?php } ?>
