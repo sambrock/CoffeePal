@@ -188,6 +188,7 @@ function getLogin($id){
 }
 function getAllProductsSold($time){
     $conn = getConnection();
+    date_default_timezone_set('Europe/London');
     if($time=="d"){
         $date = date("Y-m-d");
         $query="SELECT products.name AS product_name, COUNT(product_id) as sold, SUM(order_items.price) AS total FROM order_items INNER JOIN products ON order_items.product_id=products.id INNER JOIN orders ON order_items.order_id=orders.id WHERE CAST(date_time AS DATE) = :date GROUP BY product_id ORDER BY product_id ASC";
@@ -204,6 +205,7 @@ function getAllProductsSold($time){
 }
 function getProductsSold($time){
     $conn = getConnection();
+    date_default_timezone_set('Europe/London');
     if($time=="d"){
         $date = date("Y-m-d");
         $query="SELECT products.name AS product_name, COUNT(product_id) as sold FROM order_items INNER JOIN products ON order_items.product_id=products.id INNER JOIN orders ON order_items.order_id=orders.id WHERE CAST(date_time AS DATE) = :date GROUP BY product_id ORDER BY sold DESC LIMIT 10";
@@ -220,6 +222,7 @@ function getProductsSold($time){
 }
 function getTotalSold($time){
     $conn = getConnection();
+    date_default_timezone_set('Europe/London');
     if($time=="d"){
         $date = date("Y-m-d");
         $query="SELECT SUM(order_items.price) AS total, COUNT(product_id) AS sold FROM order_items INNER JOIN orders ON order_items.order_id=orders.id  WHERE CAST(date_time AS DATE) = :date";
