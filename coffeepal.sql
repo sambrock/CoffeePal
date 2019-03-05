@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2019 at 09:41 PM
+-- Generation Time: Mar 05, 2019 at 10:14 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.0.30
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
-CREATE TABLE `cp_categories` (
+CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -37,7 +37,7 @@ CREATE TABLE `cp_categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `cp_categories` (`id`, `name`) VALUES
+INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Hot Drinks'),
 (2, 'Cold Drinks'),
 (3, 'Snacks'),
@@ -49,7 +49,7 @@ INSERT INTO `cp_categories` (`id`, `name`) VALUES
 -- Table structure for table `employees`
 --
 
-CREATE TABLE `cp_employees` (
+CREATE TABLE `employees` (
   `id` int(10) UNSIGNED NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
@@ -62,10 +62,10 @@ CREATE TABLE `cp_employees` (
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `cp_employees` (`id`, `first_name`, `last_name`, `password`, `manager_id`, `role_id`) VALUES
+INSERT INTO `employees` (`id`, `first_name`, `last_name`, `password`, `manager_id`, `role_id`) VALUES
 (1, 'David', 'Abercrombie', '$2y$10$LilTLIzmLKoS6Wz1XdcI9ezySBGalPCJ3paPc0aeDkNqUBWBbBhUu', 0, 2),
-(2, 'Alex', 'Butterworth', '$2y$10$LilTLIzmLKoS6Wz1XdcI9ezySBGalPCJ3paPc0aeDkNqUBWBbBhUu', 1, 1),
-(3, 'Elena', 'Fisher', '$2y$10$LilTLIzmLKoS6Wz1XdcI9ezySBGalPCJ3paPc0aeDkNqUBWBbBhUu', 1, 1),
+(2, 'Alex', 'Butterworth', '$2y$10$UkyzX16oz4D67naH95p2qewYiU5A3.L3FgTPlOVr1zBLzDModZlBK', 1, 1),
+(3, 'Elena', 'Fisher', '$2y$10$UkyzX16oz4D67naH95p2qewYiU5A3.L3FgTPlOVr1zBLzDModZlBK', 1, 1),
 (4, 'Jack', 'Smith', '$2y$10$LilTLIzmLKoS6Wz1XdcI9ezySBGalPCJ3paPc0aeDkNqUBWBbBhUu', 1, 1);
 
 -- --------------------------------------------------------
@@ -74,7 +74,7 @@ INSERT INTO `cp_employees` (`id`, `first_name`, `last_name`, `password`, `manage
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `cp_orders` (
+CREATE TABLE `orders` (
   `id` int(10) UNSIGNED NOT NULL,
   `date_time` datetime NOT NULL,
   `status` varchar(10) NOT NULL
@@ -84,7 +84,7 @@ CREATE TABLE `cp_orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `cp_orders` (`id`, `date_time`, `status`) VALUES
+INSERT INTO `orders` (`id`, `date_time`, `status`) VALUES
 (110, '2019-01-22 23:57:43', 'Complete'),
 (111, '2019-01-27 18:39:41', 'Complete'),
 (112, '2019-01-27 20:43:42', 'Processing'),
@@ -196,7 +196,7 @@ INSERT INTO `cp_orders` (`id`, `date_time`, `status`) VALUES
 -- Table structure for table `order_items`
 --
 
-CREATE TABLE `cp_order_items` (
+CREATE TABLE `order_items` (
   `id` int(10) NOT NULL,
   `order_id` int(10) UNSIGNED NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
@@ -217,7 +217,7 @@ CREATE TABLE `cp_order_items` (
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `cp_order_items` (`id`, `order_id`, `product_id`, `opt_1`, `opt_2`, `opt_3`, `opt_4`, `opt_5`, `opt_6`, `opt_7`, `opt_8`, `opt_9`, `opt_10`, `price`) VALUES
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `opt_1`, `opt_2`, `opt_3`, `opt_4`, `opt_5`, `opt_6`, `opt_7`, `opt_8`, `opt_9`, `opt_10`, `price`) VALUES
 (38, 110, 1, 'Large', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.90'),
 (56, 110, 2, 'Large', 'Light Splash of Cream', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2.50'),
 (67, 110, 10, 'Medium', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.90'),
@@ -818,7 +818,7 @@ INSERT INTO `cp_order_items` (`id`, `order_id`, `product_id`, `opt_1`, `opt_2`, 
 (768, 285, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.80'),
 (769, 285, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.80'),
 (770, 285, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.80');
-INSERT INTO `cp_order_items` (`id`, `order_id`, `product_id`, `opt_1`, `opt_2`, `opt_3`, `opt_4`, `opt_5`, `opt_6`, `opt_7`, `opt_8`, `opt_9`, `opt_10`, `price`) VALUES
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `opt_1`, `opt_2`, `opt_3`, `opt_4`, `opt_5`, `opt_6`, `opt_7`, `opt_8`, `opt_9`, `opt_10`, `price`) VALUES
 (771, 285, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.80'),
 (772, 285, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.80'),
 (773, 285, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.80'),
@@ -1396,7 +1396,7 @@ INSERT INTO `cp_order_items` (`id`, `order_id`, `product_id`, `opt_1`, `opt_2`, 
 -- Table structure for table `products`
 --
 
-CREATE TABLE `cp_products` (
+CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
   `cat_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(40) NOT NULL,
@@ -1408,7 +1408,7 @@ CREATE TABLE `cp_products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `cp_products` (`id`, `cat_id`, `name`, `price`, `type_id`) VALUES
+INSERT INTO `products` (`id`, `cat_id`, `name`, `price`, `type_id`) VALUES
 (1, 1, 'Brewed Coffee', '1.50', 1),
 (2, 1, 'Latte', '2.10', 2),
 (3, 2, 'Iced Latte', '2.10', 17),
@@ -1446,7 +1446,7 @@ INSERT INTO `cp_products` (`id`, `cat_id`, `name`, `price`, `type_id`) VALUES
 -- Table structure for table `roles`
 --
 
-CREATE TABLE `cp_roles` (
+CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
   `role_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1455,7 +1455,7 @@ CREATE TABLE `cp_roles` (
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `cp_roles` (`id`, `role_name`) VALUES
+INSERT INTO `roles` (`id`, `role_name`) VALUES
 (1, 'Employee'),
 (2, 'Manager'),
 (3, 'Owner');
@@ -1466,7 +1466,7 @@ INSERT INTO `cp_roles` (`id`, `role_name`) VALUES
 -- Table structure for table `type`
 --
 
-CREATE TABLE `cp_type` (
+CREATE TABLE `type` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1475,7 +1475,7 @@ CREATE TABLE `cp_type` (
 -- Dumping data for table `type`
 --
 
-INSERT INTO `cp_type` (`id`, `name`) VALUES
+INSERT INTO `type` (`id`, `name`) VALUES
 (1, 'Coffee'),
 (2, 'Latte'),
 (3, 'Mocha'),
@@ -1501,26 +1501,26 @@ INSERT INTO `cp_type` (`id`, `name`) VALUES
 --
 -- Indexes for table `categories`
 --
-ALTER TABLE `cp_categories`
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `employees`
 --
-ALTER TABLE `cp_employees`
+ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_logins_role_id` (`role_id`);
 
 --
 -- Indexes for table `orders`
 --
-ALTER TABLE `cp_orders`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `order_items`
 --
-ALTER TABLE `cp_order_items`
+ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_order_items_product_id` (`product_id`),
   ADD KEY `fk_order_items_order_id` (`order_id`);
@@ -1528,7 +1528,7 @@ ALTER TABLE `cp_order_items`
 --
 -- Indexes for table `products`
 --
-ALTER TABLE `cp_products`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_procucts_categories_cat_id` (`cat_id`),
   ADD KEY `fk_procucts_type_cat_id` (`type_id`);
@@ -1536,13 +1536,13 @@ ALTER TABLE `cp_products`
 --
 -- Indexes for table `roles`
 --
-ALTER TABLE `cp_roles`
+ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `type`
 --
-ALTER TABLE `cp_type`
+ALTER TABLE `type`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1552,25 +1552,25 @@ ALTER TABLE `cp_type`
 --
 -- AUTO_INCREMENT for table `employees`
 --
-ALTER TABLE `cp_employees`
+ALTER TABLE `employees`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `cp_orders`
+ALTER TABLE `orders`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
-ALTER TABLE `cp_order_items`
+ALTER TABLE `order_items`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1341;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
-ALTER TABLE `cp_roles`
+ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -1580,23 +1580,23 @@ ALTER TABLE `cp_roles`
 --
 -- Constraints for table `employees`
 --
-ALTER TABLE `cp_employees`
-  ADD CONSTRAINT `fk_logins_role_id` FOREIGN KEY (`role_id`) REFERENCES `cp_roles` (`id`);
+ALTER TABLE `employees`
+  ADD CONSTRAINT `fk_logins_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
 -- Constraints for table `order_items`
 --
-ALTER TABLE `cp_order_items`
-  ADD CONSTRAINT `fk_order_items_order_id` FOREIGN KEY (`order_id`) REFERENCES `cp_orders` (`id`),
-  ADD CONSTRAINT `fk_order_items_product_id` FOREIGN KEY (`product_id`) REFERENCES `cp_products` (`id`),
-  ADD CONSTRAINT `fk_order_items_products_id` FOREIGN KEY (`product_id`) REFERENCES `cp_products` (`id`);
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `fk_order_items_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `fk_order_items_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `fk_order_items_products_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
 -- Constraints for table `products`
 --
-ALTER TABLE `cp_products`
-  ADD CONSTRAINT `fk_procucts_categories_cat_id` FOREIGN KEY (`cat_id`) REFERENCES `cp_categories` (`id`),
-  ADD CONSTRAINT `fk_procucts_type_type_id` FOREIGN KEY (`type_id`) REFERENCES `cp_type` (`id`);
+ALTER TABLE `products`
+  ADD CONSTRAINT `fk_procucts_categories_cat_id` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `fk_procucts_type_type_id` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
