@@ -381,7 +381,7 @@ function orderValid(){
 //Item add validation
 function itemValid(){
     $itemType = $(".item-btn.active").attr('data-type');
-    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea"){
+    if($itemType==="Coffee" || $itemType==="Latte" || $itemType==="Mocha" || $itemType==="Tea" || $itemType==="Iced" || $itemType==="Hot Chocolate" || $itemType==="Cappuccino" || $itemType==="Americano"){
         if($("#add-in-size").length){
             return true;
         }else{
